@@ -229,6 +229,36 @@ Expected evaluation time and results for the pre-trained FFHQ generator using on
 
 Please note that the exact results may vary from run to run due to the non-deterministic nature of TensorFlow.
 
+## Running `pretrained_example.py` on EC2
+1. Launch a GPU instance (e.g. p2.xlarge) with a Deep Learning Base AMI (Amazon Linux) Version 16.2 (ami-003c401895188b246)
+2. Setup a virtual environment with Python 3.6.3  -- [this gist is helpful](https://gist.github.com/LeoBcYang/5a07a6df6e844d8cb63ae13b28155bd5)
+3. Add a `requirements.txt` file to the `stylegan` directory with the following:
+	
+	```
+ 	numpy==1.16.1
+ 	Pillow==5.4.1
+ 	requests==2.21.0
+ 	tensorflow-gpu==1.13.0rc1
+ 	tensorboard==1.12.2
+ 	tensorflow-estimator==1.13.0rc0
+ 	```
+4. Install the requirements `pip install -r requirements.txt`
+5. In `/usr/local` change the `cuda` symlink to point to `cuda-10.0`
+
+	```
+	cd /usr/local
+	sudo rm cuda
+	sudo ln -s /usr/local/cuda-10.0 cuda
+	```
+	
+6. Run the example `python pretrained_example.py` 
+
+Notes:
+1. The above will also work when using an Ubuntu based DL AMI.  Setting up a virtual environment will be slightly different.
+2. Using a different version of TF may require a differnt Cuda lib.  Adjust as necessary.
+
+
+
 ## Acknowledgements
 
 We thank Jaakko Lehtinen, David Luebke, and Tuomas Kynk&auml;&auml;nniemi for in-depth discussions and helpful comments; Janne Hellsten, Tero Kuosmanen, and Pekka J&auml;nis for compute infrastructure and help with the code release.
