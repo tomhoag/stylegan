@@ -232,6 +232,7 @@ Please note that the exact results may vary from run to run due to the non-deter
 ## Running `pretrained_example.py` on EC2
 1. Launch a GPU instance (e.g. p2.xlarge) with a Deep Learning Base AMI (Amazon Linux) Version 16.2 (ami-003c401895188b246)
 2. Setup a virtual environment with Python 3.6.3  -- [this gist is helpful](https://gist.github.com/LeoBcYang/5a07a6df6e844d8cb63ae13b28155bd5)
+3. Clone the code to the EC2 instance
 3. Add a `requirements.txt` file to the `stylegan` directory with the following:
 	
 	```
